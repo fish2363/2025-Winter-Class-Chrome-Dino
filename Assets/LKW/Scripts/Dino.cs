@@ -51,7 +51,7 @@ public class Dino : MonoBehaviour
             boxCollider2D.offset = new Vector2(originOffset.x, originOffset.y -0.28f);
             boxCollider2D.size = new Vector2(originSize.x, originSize.y/2);
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow))
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && isGround == true)
         {
             animator.Play("Run");
             boxCollider2D.offset = originOffset;
@@ -70,5 +70,14 @@ public class Dino : MonoBehaviour
             animator.Play("Run");
             isGround = true;
         }
+        else if (collision.collider.CompareTag("Obstacle"))
+        {
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        Time.timeScale = 0;
     }
 }
