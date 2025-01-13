@@ -1,20 +1,24 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Dino : MonoBehaviour
 {
     public int jumpPower = 5;
-    public bool canJump = true;
-    private Rigidbody2D rigidbody2D;
-    private BoxCollider2D boxCollider2D;
-
+    public bool isGround = true;
     private Vector2 originSize;
     private Vector2 originOffset;
+    
+    private Rigidbody2D rigidbody2D;
+    private BoxCollider2D boxCollider2D;
+    private Animator animator;
+
 
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -31,23 +35,25 @@ public class Dino : MonoBehaviour
 
     private void TryJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
         {
-            canJump = false;
+            animator.Play("Jump");
+            isGround = false;
             rigidbody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
     }
 
     private void Down()
     {
-        
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) && isGround == true)
         {
-            boxCollider2D.offset = new Vector2(originOffset.x, originOffset.y -0.25f);
+            animator.Play("Low");
+            boxCollider2D.offset = new Vector2(originOffset.x, originOffset.y -0.28f);
             boxCollider2D.size = new Vector2(originSize.x, originSize.y/2);
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.DownArrow))
         {
+            animator.Play("Run");
             boxCollider2D.offset = originOffset;
             boxCollider2D.size = originSize;
         }
@@ -58,6 +64,11 @@ public class Dino : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        canJump = true;
+        if (collision.collider.CompareTag("Ground"))
+        {
+            if (isGround == true) return;
+            animator.Play("Run");
+            isGround = true;
+        }
     }
 }
