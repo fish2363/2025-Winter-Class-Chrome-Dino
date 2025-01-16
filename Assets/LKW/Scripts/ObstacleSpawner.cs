@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,6 +10,7 @@ public class ObstacleSpawner : MonoBehaviour
     private void Update()
     {
         currentTime += Time.deltaTime;
+        
         if (currentTime >= SpawnDelay)
         {
             int randomIndex = Random.Range(0, 4);

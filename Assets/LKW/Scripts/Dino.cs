@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Dino : MonoBehaviour
 {
@@ -12,6 +10,9 @@ public class Dino : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private BoxCollider2D boxCollider2D;
     private Animator animator;
+
+    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private ScoreManager scoreManager;
 
 
     private void Awake()
@@ -66,18 +67,22 @@ public class Dino : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
-            if (isGround == true) return;
+            if (isGround == true)
+                return;
+            
             animator.Play("Run");
             isGround = true;
         }
         else if (collision.collider.CompareTag("Obstacle"))
-        {
             GameOver();
-        }
     }
 
     private void GameOver()
     {
+        animator.Play("Dead");
+        gameOverUI.SetActive(true);
+        scoreManager.SetHighScore();
+        
         Time.timeScale = 0;
     }
 }

@@ -21,11 +21,11 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = $"score : {score}";
     }
     
-    public void SetHighScore(int value)
+    public void SetHighScore()
     {
-        if (value > highScore)
+        if (score > highScore)
         {
-            highScore = value;
+            highScore = score;
             highScoreText.text = $"high : {highScore}";
             PlayerPrefs.SetInt("HighScore", highScore);
         }
