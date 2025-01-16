@@ -2,24 +2,29 @@ using UnityEngine;
 
 public class Dino : MonoBehaviour
 {
-    public int jumpPower = 5;
-    public bool isGround = true;
+    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private ScoreManager scoreManager;
+    
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip deadSound;
+    
+    [SerializeField] private int jumpPower = 5;
+    
+    private bool isGround = true;
     private Vector2 originSize;
     private Vector2 originOffset;
     
-    private Rigidbody2D rigidbody2D;
+    private Rigidbody2D rigid;
     private BoxCollider2D boxCollider2D;
     private Animator animator;
-
-    [SerializeField] private GameObject gameOverUI;
-    [SerializeField] private ScoreManager scoreManager;
-
+    private AudioSource audioSource;
 
     private void Awake()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rigid = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -39,8 +44,9 @@ public class Dino : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
         {
             animator.Play("Jump");
+            audioSource.PlayOneShot(jumpSound);
             isGround = false;
-            rigidbody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
     }
 
@@ -80,6 +86,7 @@ public class Dino : MonoBehaviour
     private void GameOver()
     {
         animator.Play("Dead");
+        audioSource.PlayOneShot(deadSound);
         gameOverUI.SetActive(true);
         scoreManager.SetHighScore();
         
