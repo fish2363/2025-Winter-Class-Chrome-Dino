@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPower: 12
-  isGround: 1
+  isGround: 0
   gameOverUI: {fileID: 354522285}
   scoreManager: {fileID: 732350605}
 --- !u!50 &136840044

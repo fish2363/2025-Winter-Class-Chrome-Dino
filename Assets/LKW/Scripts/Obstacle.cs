@@ -3,16 +3,15 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeed = 5f;
     private Rigidbody2D rigidbody2d;
 
     private void Awake()
     {
-        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    private void Update()
     {
-        rigidbody2d.linearVelocityX = -moveSpeed;
+        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
     }
 }
