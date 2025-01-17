@@ -153,12 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adabeb0dc931a7842803e3a7f9845df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 12
-  isGround: 0
   gameOverUI: {fileID: 354522285}
   scoreManager: {fileID: 732350605}
   jumpSound: {fileID: 8300000, guid: 44c65377d3b76634e95cb575e7de949d, type: 3}
   deadSound: {fileID: 8300000, guid: 884316176cdc186449e8555358e46754, type: 3}
+  jumpPower: 12
 --- !u!50 &136840044
 Rigidbody2D:
   serializedVersion: 5
@@ -220,7 +219,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.08862972, y: 0.008286774}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -230,7 +229,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.554162, y: 1.482834}
+  m_Size: {x: 0.6, y: 1.5}
   m_EdgeRadius: 0
 --- !u!212 &136840046
 SpriteRenderer:
