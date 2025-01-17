@@ -37,16 +37,16 @@ public class Dino : MonoBehaviour
     {
         TryJump();
         Down();
+        animator.SetBool("IsGround", isGround);
     }
 
     private void TryJump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
         {
-            animator.Play("Jump");
             audioSource.PlayOneShot(jumpSound);
             isGround = false;
-            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            rigid.AddForceY(jumpPower, ForceMode2D.Impulse);
         }
     }
 
@@ -54,13 +54,13 @@ public class Dino : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.DownArrow) && isGround == true)
         {
-            animator.Play("Low");
-            boxCollider2D.offset = new Vector2(originOffset.x, originOffset.y -0.28f);
+            animator.SetBool("Low",true);
+            boxCollider2D.offset = new Vector2(0, -0.25f);
             boxCollider2D.size = new Vector2(originSize.x, originSize.y/2);
         }
         else if (Input.GetKeyUp(KeyCode.DownArrow) && isGround == true)
         {
-            animator.Play("Run");
+            animator.SetBool("Low",false);
             boxCollider2D.offset = originOffset;
             boxCollider2D.size = originSize;
         }
@@ -76,7 +76,6 @@ public class Dino : MonoBehaviour
             if (isGround == true)
                 return;
             
-            animator.Play("Run");
             isGround = true;
         }
         else if (collision.collider.CompareTag("Obstacle"))
@@ -85,7 +84,7 @@ public class Dino : MonoBehaviour
 
     private void GameOver()
     {
-        animator.Play("Dead");
+        animator.SetBool("Dead",true);
         audioSource.PlayOneShot(deadSound);
         gameOverUI.SetActive(true);
         scoreManager.SetHighScore();
