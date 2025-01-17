@@ -156,7 +156,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 354522285}
   scoreManager: {fileID: 732350605}
   jumpSound: {fileID: 8300000, guid: 44c65377d3b76634e95cb575e7de949d, type: 3}
-  deadSound: {fileID: 8300000, guid: 884316176cdc186449e8555358e46754, type: 3}
+  deadSound: {fileID: 8300000, guid: a8d4916527befef4b83d914cf9615ec0, type: 3}
   jumpPower: 12
 --- !u!50 &136840044
 Rigidbody2D:
