@@ -153,12 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adabeb0dc931a7842803e3a7f9845df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 12
-  isGround: 0
   gameOverUI: {fileID: 354522285}
   scoreManager: {fileID: 732350605}
   jumpSound: {fileID: 8300000, guid: 44c65377d3b76634e95cb575e7de949d, type: 3}
   deadSound: {fileID: 8300000, guid: 884316176cdc186449e8555358e46754, type: 3}
+  jumpPower: 12
 --- !u!50 &136840044
 Rigidbody2D:
   serializedVersion: 5
@@ -433,7 +432,7 @@ GameObject:
   - component: {fileID: 165547353}
   - component: {fileID: 165547355}
   m_Layer: 0
-  m_Name: BackGround2
+  m_Name: Background2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -483,7 +482,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5760202260919997367, guid: e056d5bea5290f348b27828c12c4047d, type: 3}
+  m_Sprite: {fileID: -3926854516465884214, guid: e9b3db9b0cf0d4e499358f68d9a17ee9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -783,7 +782,7 @@ GameObject:
   - component: {fileID: 344234171}
   - component: {fileID: 344234173}
   m_Layer: 0
-  m_Name: BackGround1
+  m_Name: Background1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -833,7 +832,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5760202260919997367, guid: e056d5bea5290f348b27828c12c4047d, type: 3}
+  m_Sprite: {fileID: -3926854516465884214, guid: e9b3db9b0cf0d4e499358f68d9a17ee9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
