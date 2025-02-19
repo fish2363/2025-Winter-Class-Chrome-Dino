@@ -1,7 +1,10 @@
 using UnityEngine;
 
+
+
 public class Dino : MonoBehaviour
 {
+
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private ScoreManager scoreManager;
     
@@ -9,7 +12,7 @@ public class Dino : MonoBehaviour
     [SerializeField] private AudioClip deadSound;
     
     [SerializeField] private int jumpPower = 5;
-    
+
     private bool isGround = true;
     private Vector2 originSize;
     private Vector2 originOffset;
@@ -18,6 +21,8 @@ public class Dino : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     private Animator animator;
     private AudioSource audioSource;
+
+   
 
     private void Awake()
     {
